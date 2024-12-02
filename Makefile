@@ -32,24 +32,24 @@ all:
 
 build:
 	@echo "🐳 $(FG_BLUE)Building images$(RESET) 🐳"
-	@docker-compose build
+	@docker compose build
 	@echo "🛠  $(FG_GREEN)Built images$(RESET) 🛠"
 
 up:
-	@docker-compose up --build -d
+	@docker compose up --build -d
 	@echo "🛜  $(FG_GREEN)Connect to $(FG_WHITE)$(UNDERLINE)https://localhost$(RESET) 🛜"
 
 down:
-	@docker-compose down
+	@docker compose down
 	@echo "🚫 $(FG_RED)Disconnected$(RESET) 🚫"
 
 stop:
-	@docker-compose stop
+	@docker compose stop
 	@echo "🛑 $(FG_YELLOW)Stopped$(RESET) 🛑"
 
 start:
 	@echo "$(FG_GREEN)Started$(RESET)"
-	@docker-compose start
+	@docker compose start
 	@echo "$(FG_GREEN)Connect to $(FG_WHITE)$(UNDERLINE)https://localhost$(RESET)"
 
 re:
@@ -59,7 +59,7 @@ re:
 
 log:
 	@echo "📄 $(FG_CYAN)Logs$(RESET) 📄"
-	@docker-compose logs
+	@docker compose logs
 
 clean:
 	@$(MAKE) down
