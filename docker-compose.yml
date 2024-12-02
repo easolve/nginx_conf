@@ -1,0 +1,26 @@
+services:
+  easerve:
+    build: ./easerve
+    image: easerve
+    container_name: easerve
+    restart: on-failure
+    expose:
+      - "3000"
+    networks:
+      - easerve_network
+  nginx:
+    depends_on:
+      - easerve
+    build: ./nginx
+    image: nginx
+    container_name: nginx
+    restart: on-failure
+    ports:
+      - "443:443"
+    networks:
+      - easerve_network
+
+
+networks:
+  easerve_network:
+    driver: bridge
