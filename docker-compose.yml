@@ -1,13 +1,15 @@
 services:
   easerve:
-    build: ./easerve
-    image: easerve
+    image: seunan/easerve:latest
     container_name: easerve
     restart: on-failure
     expose:
       - "3000"
     networks:
       - easerve_network
+    environment:
+      NEXT_SUPABASE_SERVICE_ROLE: ${NEXT_SUPABASE_SERVICE_ROLE}
+      NEXT_SUPABASE_DB_PASSWORD: ${NEXT_SUPABASE_DB_PASSWORD}
   nginx:
     depends_on:
       - easerve
@@ -20,7 +22,11 @@ services:
     networks:
       - easerve_network
 
-
 networks:
   easerve_network:
     driver: bridge
+
+# NEXT_PUBLIC 접두사는 빌드 시점에 제공
+# 클라이언트 측에서 API URL이나 공개 키처럼 접근 가능해야하는 변수들이기 때문임
+# NEXT_SUPABASE 접두사는 런타임 시점에 제공
+# 서버 측에서 접근 가능해야하는 변수들이기 때문임
