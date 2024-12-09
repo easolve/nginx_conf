@@ -3,10 +3,12 @@
 FROM alpine:3.21
 
 RUN apk update && \
-    apk add --no-cache nginx
+    apk add --no-cache nginx && \
+    mkdir -p /etc/nginx/ssl
 
 # Copy the configuration file
 COPY conf/default.conf /etc/nginx/http.d/default.conf
+COPY /etc/ssl/cloudflare /etc/nginx/ssl 
 
 # Port to expose, Just documentation(Not necessary)
 EXPOSE 443/tcp
