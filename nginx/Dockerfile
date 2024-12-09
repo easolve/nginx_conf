@@ -8,7 +8,8 @@ RUN apk update && \
 
 # Copy the configuration file
 COPY conf/default.conf /etc/nginx/http.d/default.conf
-COPY /etc/ssl/cloudflare /etc/nginx/ssl 
+COPY ssl/origin.pem /etc/nginx/ssl/origin.pem
+COPY ssl/origin.key /etc/nginx/ssl/origin.key
 
 # Port to expose, Just documentation(Not necessary)
 EXPOSE 443/tcp
