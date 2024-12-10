@@ -1,3 +1,29 @@
 easerve/
-.env*
 ssl/
+
+# OS
+.DS_Store
+
+# vscode
+.vscode/
+tempCodeRunnerFile.*
+
+# C/C++
+a.out
+a.out.dSYM/
+*.o
+*.i
+*.bc
+
+# Node.js
+node_modules/
+
+# Python
+__pycache__/
+venv/
+
+# Environment
+.env*
+
+# git
+changes.patch
