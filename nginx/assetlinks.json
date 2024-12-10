@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.jabtraining.release",
+      "sha256_cert_fingerprints": [
+        "69:A5:B5:9F:DF:A0:65:7D:D5:43:5D:E7:5D:68:4D:74:DA:30:1C:C1:81:E8:AB:02:9C:E9:67:94:EE:86:08:0B"
+      ]
+    }
+  }
+]
