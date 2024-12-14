@@ -19,13 +19,31 @@ services:
     restart: on-failure
     ports:
       - "443:443"
+      - "80:80"
+    networks:
+      - easerve_network
+    volumes:
+      - ./logs/nginx:/var/log/nginx
+  n8n:
+    image: n8nio/n8n
+    container_name: n8n
+    restart: unless-stopped
+    expose:
+      - "5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
+      - GENERIC_TIMEZONE=Asia/Seoul
+      - TZ=Asia/Seoul
+    volumes:
+      - ./n8n_data:/root/.n8n
     networks:
       - easerve_network
 
 networks:
   easerve_network:
     driver: bridge
-
 # NEXT_PUBLIC 접두사는 빌드 시점에 제공
 # 클라이언트 측에서 API URL이나 공개 키처럼 접근 가능해야하는 변수들이기 때문임
 # NEXT_SUPABASE 접두사는 런타임 시점에 제공
